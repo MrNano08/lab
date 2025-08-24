@@ -1,6 +1,6 @@
 # Risk Calculator Backend
 
-API backend for the Risk Calculator application built with NestJS, optimized for Vercel deployment.
+API backend for the Risk Calculator application built with NestJS, optimized for Railway deployment.
 
 ## Features
 
@@ -9,38 +9,37 @@ API backend for the Risk Calculator application built with NestJS, optimized for
 - **Health Check Endpoint**: Monitor service status
 - **CORS Support**: Configured for frontend integration
 - **TypeScript**: Full type safety throughout the application
-- **Vercel Optimized**: Serverless deployment ready
+- **Railway Optimized**: Production deployment ready
 
-## Quick Deploy to Vercel
+## Quick Deploy to Railway
 
-### Option 1: Import from Git (Recommended)
+### Option 1: Deploy from Git (Recommended)
 
 1. **Fork or Clone this repository**
-2. **Go to [Vercel Dashboard](https://vercel.com/dashboard)**
+2. **Go to [Railway Dashboard](https://railway.app/dashboard)**
 3. **Click "New Project"**
-4. **Import Git Repository**
+4. **Select "Deploy from GitHub repo"**
 5. **Select your repository**
-6. **Configure project:**
-   - **Framework Preset**: Other
+6. **Configure the service:**
    - **Root Directory**: `risk-calculator-backend`
-   - **Build Command**: Leave empty
-   - **Output Directory**: Leave empty
-   - **Install Command**: `npm install`
+   - **Build Command**: `npm run build`
+   - **Start Command**: `npm run start:prod`
 7. **Click "Deploy"**
 
-**Important**: The project uses a custom API handler in `api/index.ts` for better Vercel compatibility.
-
-### Option 2: Vercel CLI
+### Option 2: Railway CLI
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
+# Install Railway CLI
+npm i -g @railway/cli
 
-# Login to Vercel
-vercel login
+# Login to Railway
+railway login
+
+# Initialize project
+railway init
 
 # Deploy
-vercel --prod
+railway up
 ```
 
 ## API Endpoints
@@ -91,45 +90,44 @@ npm run test:cov
 
 ## Environment Variables
 
-The following environment variables can be configured in Vercel:
+The following environment variables can be configured in Railway:
 
 - `NODE_ENV` - Set to "production" for production deployment
-- `PORT` - Port number (Vercel will set this automatically)
+- `PORT` - Port number (Railway will set this automatically)
 
 ## API Endpoints (After Deployment)
 
 Once deployed, your API will be available at:
-- Health Check: `https://your-project-name.vercel.app/health`
-- Config: `https://your-project-name.vercel.app/api/config`
-- Calculate: `https://your-project-name.vercel.app/api/calc`
-- Root: `https://your-project-name.vercel.app/`
+- Health Check: `https://your-project-name.railway.app/health`
+- Config: `https://your-project-name.railway.app/api/config`
+- Calculate: `https://your-project-name.railway.app/api/calc`
+- Root: `https://your-project-name.railway.app/`
 
 ## CORS Configuration
 
 The API is configured to accept requests from:
 - Development: `http://localhost:5173`, `http://localhost:3000`, `http://localhost:3001`
-- Production: Vercel frontend URLs (configured in `main.ts`)
+- Production: Railway frontend URLs (configured in `main.ts`)
 
 ## Project Structure
 
 ```
-├── api/
-│   └── index.ts              # Vercel API handler
-├── src/
-│   ├── app.controller.ts      # Main API controller
-│   ├── app.module.ts          # Main application module
-│   ├── health.controller.ts   # Health check endpoint
-│   ├── main.ts               # Application entry point
-│   └── risk/
-│       ├── dto/
-│       │   ├── calc.dto.ts       # Calculation request/response DTOs
-│       │   └── config.dto.ts     # Configuration response DTO
-│       ├── calc.controller.ts    # Calculation endpoint controller
-│       ├── config.controller.ts  # Configuration endpoint controller
-│       ├── risk.service.ts       # Risk calculation business logic
-│       └── risk.module.ts        # Risk module definition
-├── vercel.json               # Vercel configuration
-└── package.json              # Dependencies and scripts
+src/
+├── app.controller.ts      # Main API controller
+├── app.module.ts          # Main application module
+├── health.controller.ts   # Health check endpoint
+├── main.ts               # Application entry point
+└── risk/
+    ├── dto/
+    │   ├── calc.dto.ts       # Calculation request/response DTOs
+    │   └── config.dto.ts     # Configuration response DTO
+    ├── calc.controller.ts    # Calculation endpoint controller
+    ├── config.controller.ts  # Configuration endpoint controller
+    ├── risk.service.ts       # Risk calculation business logic
+    └── risk.module.ts        # Risk module definition
+├── railway.json            # Railway configuration
+├── Procfile               # Railway process file
+└── package.json           # Dependencies and scripts
 ```
 
 ## Risk Calculation Logic
@@ -145,20 +143,28 @@ The risk calculation follows the formula:
 - **High (10-16)**: Prioritize controls and mitigation
 - **Extreme (17-25)**: Immediate action required
 
+## Railway Deployment Features
+
+- **Auto-scaling**: Automatic scaling based on traffic
+- **Health checks**: Built-in health monitoring
+- **Environment variables**: Secure configuration management
+- **Custom domains**: Easy domain setup
+- **SSL certificates**: Automatic HTTPS
+- **Logs**: Real-time application logs
+
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Build Fails**: Make sure you're in the `risk-calculator-backend` directory
-2. **CORS Errors**: Check that your frontend URL is in the allowed origins
-3. **Module Not Found**: All dependencies are included in package.json
+1. **Build Fails**: Check that all dependencies are in package.json
+2. **CORS Errors**: Verify frontend URL is in allowed origins
+3. **Port Issues**: Railway sets PORT automatically
 
-### Vercel Deployment Tips
+### Debug Steps
 
-- The project uses `@vercel/node` for automatic TypeScript compilation
-- No custom build step required
-- Health check endpoint available at `/health`
-- All API routes are prefixed with `/api`
+1. **Check Railway Logs**: Railway Dashboard → Project → Deployments → Latest
+2. **Test Health Endpoint**: `https://your-project.railway.app/health`
+3. **Verify Environment Variables**: Railway Dashboard → Variables
 
 ## License
 

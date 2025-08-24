@@ -5,14 +5,14 @@ const common_1 = require("@nestjs/common");
 const app_module_1 = require("./app.module");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    app.setGlobalPrefix('api');
     const allowedOrigins = process.env.NODE_ENV === 'production'
         ? [
             'https://risk-calculator-frontend.vercel.app',
             'https://risk-calculator-frontend-git-main.vercel.app',
             'https://risk-calculator-frontend-git-develop.vercel.app',
-            'https://risk-calculator-frontend.vercel.app',
-            'https://risk-calculator-frontend-git-main.vercel.app',
-            'https://risk-calculator-frontend-git-develop.vercel.app'
+            'https://risk-calculator-frontend.railway.app',
+            'https://risk-calculator-frontend-production.railway.app'
         ]
         : ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:3001'];
     app.enableCors({
@@ -26,7 +26,7 @@ async function bootstrap() {
         transform: true,
     }));
     const port = process.env.PORT || 3001;
-    await app.listen(port);
+    await app.listen(port, '0.0.0.0');
     console.log(`Risk Calculator API running on port ${port}`);
 }
 bootstrap();

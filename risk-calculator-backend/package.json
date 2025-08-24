@@ -1,7 +1,7 @@
 {
   "name": "risk-calculator-backend",
   "version": "1.0.0",
-  "description": "Risk Calculator API Backend - Optimized for Vercel",
+  "description": "Risk Calculator API Backend - Optimized for Railway",
   "main": "dist/main.js",
   "engines": {
     "node": ">=18.0.0"
@@ -13,7 +13,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "vercel-build": "echo 'No build step needed for Vercel'",
+    "build": "nest build",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -21,7 +21,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-  "keywords": ["risk", "calculator", "api", "nestjs", "vercel", "serverless"],
+  "keywords": ["risk", "calculator", "api", "nestjs", "railway", "nodejs"],
   "author": "",
   "license": "ISC",
   "dependencies": {

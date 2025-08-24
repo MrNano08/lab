@@ -12,12 +12,12 @@ export class AppController {
     return 'Risk Calculator API is running!';
   }
 
-  @Get('api/config')
+  @Get('config')
   getConfig(): ConfigResponseDto {
     return this.riskService.getConfig();
   }
 
-  @Post('api/calc')
+  @Post('calc')
   calculateRisk(@Body(ValidationPipe) calcDto: CalcRequestDto): CalcResponseDto {
     return this.riskService.calculateRisk(calcDto);
   }
