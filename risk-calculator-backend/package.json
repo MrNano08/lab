@@ -1,8 +1,11 @@
 {
   "name": "risk-calculator-backend",
   "version": "1.0.0",
-  "description": "Risk Calculator API Backend",
+  "description": "Risk Calculator API Backend - Optimized for Vercel",
   "main": "dist/main.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -18,7 +21,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-  "keywords": ["risk", "calculator", "api", "nestjs"],
+  "keywords": ["risk", "calculator", "api", "nestjs", "vercel", "serverless"],
   "author": "",
   "license": "ISC",
   "dependencies": {

@@ -43,3 +43,11 @@ lerna-debug.log*
 
 # Vercel
 .vercel
+
+# Build artifacts
+build/
+out/
+
+# Temporary files
+tmp/
+temp/

@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller';
+import { HealthController } from './health.controller';
 import { RiskModule } from './risk/risk.module';
 
 @Module({
@@ -9,5 +11,6 @@ import { RiskModule } from './risk/risk.module';
     }),
     RiskModule,
   ],
+  controllers: [AppController, HealthController],
 })
 export class AppModule {}

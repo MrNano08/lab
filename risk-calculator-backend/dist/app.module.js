@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
+const app_controller_1 = require("./app.controller");
+const health_controller_1 = require("./health.controller");
 const risk_module_1 = require("./risk/risk.module");
 let AppModule = class AppModule {
 };
@@ -21,6 +23,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             risk_module_1.RiskModule,
         ],
+        controllers: [app_controller_1.AppController, health_controller_1.HealthController],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
