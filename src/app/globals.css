@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* utilidades propias */
+@layer components {
+  .risk-pill { @apply px-3 py-1 rounded-full text-sm font-medium text-white; }
+  .risk-pill.low     { @apply bg-risk-low; }
+  .risk-pill.medium  { @apply bg-risk-medium; }
+  .risk-pill.high    { @apply bg-risk-high; }
+  .risk-pill.extreme { @apply bg-risk-extreme; }
+}
